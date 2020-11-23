@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
 
 const rootReducer = combineReducers({
-    locations: locationReducer,
-    events: eventReducer
+    location: locationReducer,
+    event: eventReducer
 });
 
 export default rootReducer

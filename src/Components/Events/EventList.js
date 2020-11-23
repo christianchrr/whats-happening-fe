@@ -16,7 +16,7 @@ class EventList extends React.Component {
                     {this.props.events.map((event, index) => {
                         return (
                             <li className="list-group-item">
-                                <EventData eventName={event.name} />
+                                <EventData eventName={event.name} eventMonth={event.month} eventDay={event.day} eventYear={event.year} eventDescription={event.description}/>
                             </li>
                         )
                     })}
@@ -28,7 +28,7 @@ class EventList extends React.Component {
 }
 
 function mapStateToProps(state){
-    return {events: state.events}
+    return {events: state.event.events}
 }
 
 function mapDispatchToProps(dispatch){

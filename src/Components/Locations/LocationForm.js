@@ -1,4 +1,6 @@
 import React from 'react'
+import { connect } from 'react-redux';
+import { addLocation } from '../../Actions/locationActions'
 
 class LocationForm extends React.Component {
 
@@ -21,13 +23,17 @@ class LocationForm extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
+        this.props.addLocation(this.state.text)
+        this.setState({
+            text: ''
+        })
     }
 
     render() {
         return (
             <div className="location-form-container">
                 <h4>New Location Form</h4>
-                <form>
+                <form onSubmit={(e) => this.handleSubmit(e)} >
                     <div>
                         <label htmlFor="locationName"> 
                             Location Name{" "}
@@ -120,4 +126,8 @@ class LocationForm extends React.Component {
 
 }
 
-export default LocationForm
+function mapStateToProps(state){
+    return {locations: state.location.locations}
+}
+
+export default connect (mapStateToProps, { addLocation }) (LocationForm)

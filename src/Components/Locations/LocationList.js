@@ -28,7 +28,7 @@ class LocationList extends React.Component {
 }
 
 function mapStateToProps(state){
-    return {locations: state.locations}
+    return {locations: state.location.locations}
 }
 
 function mapDispatchToProps(dispatch){

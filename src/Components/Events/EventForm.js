@@ -20,14 +20,17 @@ class EventForm extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-
+        this.props.addEvent(this.state.text)
+        this.setState({
+            text: ''
+        })
     }
 
     render() {
         return (
             <div className="event-form-container">
                 <h4>New Event Form</h4>
-                <form>
+                <form onSubmit={(e) => this.handleSubmit(e)}>
                     <div>
                         <label htmlFor="eventName"> 
                             Event Name{" "}
