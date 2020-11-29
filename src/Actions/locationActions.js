@@ -6,30 +6,22 @@ export const fetchLocations = () => {
     };
 }
 
-export const addLocation = (locationName, locationAddressLineOne, locationAddressLineTwo, locationCity, locationState, locationZip) => {
-    let locationData = {
-        locationName: locationName,
-        locationAddressLineOne: locationAddressLineOne,
-        locationAddressLineTwo: locationAddressLineTwo,
-        locationCity: locationCity,
-        locationState: locationState,
-        locationZip: locationZip
-    }
+export const addLocation = (location) => {
     return (dispatch) => {
-        fetch(`http://localhost:3000/locations` , {
+        fetch('http://localhost:3000/locations', {
             method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(locationData)})
-            .then((res) => res.json())
-            .then((res) => dispatch({ type: 'ADD_LOCATION', location: res }))
-        };
-    };
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({location: location})
+        })
+        .then((obj) => obj.json())
+        .then((obj) => dispatch({ type: 'ADD_LOCATION', payload: obj }))
+    }
+}
 
-export const removeLocation = (locationId) => {
+export const deleteLocation = (locationId) => {
     return (dispatch) => {
-        fetch('http://localhost:3000/locations/${location.Id}')
-            .then(locations => dispatch({ type: 'REMOVE_LOCATION', id: locationId}))
+        fetch(`http://localhost:3000/locations/${locationId}`, {
+            method: 'DELETE'})
+        .then(location => dispatch({ type: 'REMOVE_LOCATION', id: locationId}))
     }
 }

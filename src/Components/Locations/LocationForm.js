@@ -9,7 +9,7 @@ class LocationForm extends React.Component {
         locationAddressLineOne: "",
         locationAddressLineTwo: "",
         locationCity: "",
-        locationState: "",
+        locationState: "",                    
         locationZipCode: ""
     }
 
@@ -23,10 +23,7 @@ class LocationForm extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        this.props.addLocation(this.state.text)
-        this.setState({
-            text: ''
-        })
+        this.props.addLocation(this.state)
     }
 
     render() {
@@ -57,7 +54,7 @@ class LocationForm extends React.Component {
                         <br/>
                         <label htmlFor="locationState">
                             State{" "}
-                            <select>
+                            <select onChange={this.handleChange} name="locationState">
                                 <option value="AL">AL</option>
                                 <option value="AK">AK</option>
                                 <option value="AZ">AZ</option>

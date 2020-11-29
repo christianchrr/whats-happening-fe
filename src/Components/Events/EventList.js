@@ -1,12 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { fetchEvents } from '../../Actions/eventActions'
+import { fetchLocations } from '../../Actions/locationActions'
 import EventData from './EventData'
 
 class EventList extends React.Component {
 
     componentDidMount = () => {
         this.props.boundFetchEvents()
+        this.props.boundFetchLocations()
     }
 
     render() {
@@ -15,8 +17,8 @@ class EventList extends React.Component {
                 <ul id="EventList" className="list-group">
                     {this.props.events.map((event, index) => {
                         return (
-                            <li className="list-group-item">
-                                <EventData eventName={event.name} eventMonth={event.month} eventDay={event.day} eventYear={event.year} eventDescription={event.description}/>
+                            <li key={index} className="list-group-item">
+                                <EventData eventName={event.event_name} eventMonth={event.event_month} eventDay={event.event_day} eventYear={event.event_year} eventDescription={event.event_description} eventId={event.id}/>
                             </li>
                         )
                     })}
@@ -32,7 +34,8 @@ function mapStateToProps(state){
 }
 
 function mapDispatchToProps(dispatch){
-    return { boundFetchEvents: () => dispatch(fetchEvents()) }
+    return { boundFetchEvents: () => dispatch(fetchEvents()),
+        boundFetchLocations: () => dispatch(fetchLocations()) }
 }
 
 export default connect (mapStateToProps, mapDispatchToProps) (EventList)

@@ -1,4 +1,6 @@
 import React from 'react'
+import { connect } from 'react-redux';
+import { addEvent } from '../../Actions/eventActions'
 
 class EventForm extends React.Component {
 
@@ -8,6 +10,7 @@ class EventForm extends React.Component {
         eventDay: "",
         eventYear: "",
         eventDescription: "",
+        locationId: ""
     }
 
     handleChange = (e) => {
@@ -20,10 +23,7 @@ class EventForm extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        this.props.addEvent(this.state.text)
-        this.setState({
-            text: ''
-        })
+        this.props.addEvent(this.state)
     }
 
     render() {
@@ -39,22 +39,31 @@ class EventForm extends React.Component {
                         <br/>
                         <label htmlFor="eventMonth">
                             Month{" "}
-                            <input onChange={this.handleChange} type="integer" name="eventMonth" placeholder="" />
+                            <input onChange={this.handleChange} type="number" name="eventMonth" placeholder="" />
                         </label>
                         <br/>
                         <label htmlFor="eventDay">
                             Day{" "}
-                            <input onChange={this.handleChange} type="integer" name="eventDay" placeholder="" />
+                            <input onChange={this.handleChange} type="number" name="eventDay" placeholder="" />
                         </label>
                         <br/>
                         <label htmlFor="eventYear">
-                            City{" "}
-                            <input onChange={this.handleChange} type="integer" name="eventYear" placeholder="" />
+                            Year{" "}
+                            <input onChange={this.handleChange} type="number" name="eventYear" placeholder="" />
                         </label>
                         <br/>
                         <label htmlFor="eventDescription">
                             Description{" "}
                             <input onChange={this.handleChange} type="description" name="eventDescription" placeholder="" />
+                        </label>
+                        <br/>
+                        <label htmlFor="eventLocation">
+                            <select onChange={this.handleChange} name="locationId">
+                                <option selected disabled>-select-</option>
+                                {this.props.locations.map((location, index) => {
+                                    return <option key={index} value={location.id}>{location.location_name}</option>
+                                })}
+                            </select>
                         </label>
                     </div>
                     <div>
@@ -67,4 +76,8 @@ class EventForm extends React.Component {
 
 }
 
-export default EventForm
+function mapStateToProps(state){
+    return {events: state.event.events, locations: state.location.locations}
+}
+
+export default connect (mapStateToProps, { addEvent }) (EventForm)

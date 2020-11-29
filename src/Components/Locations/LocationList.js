@@ -1,12 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { fetchLocations } from '../../Actions/locationActions'
+import { fetchEvents } from '../../Actions/eventActions'
 import LocationData from './LocationData'
 
 class LocationList extends React.Component {
 
     componentDidMount = () => {
         this.props.boundFetchLocations()
+        this.props.boundFetchEvents()
     }
 
     render() {
@@ -15,8 +17,8 @@ class LocationList extends React.Component {
                 <ul id="LocationList" className="list-group">
                     {this.props.locations.map((location, index) => {
                         return (
-                            <li className="list-group-item">
-                                <LocationData locationName={location.name} locationAddressLineOne={location.address_line_one} locationAddressLineTwo={location.address_line_two} locationCity={location.city} locationState={location.state} locationZip={location.zip} locationId={location.id} />
+                            <li key={index} className="list-group-item">
+                                <LocationData locationName={location.location_name} locationAddressLineOne={location.location_address_line_one} locationAddressLineTwo={location.location_address_line_two} locationCity={location.location_city} locationState={location.location_state} locationZip={location.location_zip} locationId={location.id} locationEvents={this.props.events}/>
                             </li>
                         )
                     })}
@@ -28,11 +30,12 @@ class LocationList extends React.Component {
 }
 
 function mapStateToProps(state){
-    return {locations: state.location.locations}
+    return {locations: state.location.locations, events: state.event.events}
 }
 
 function mapDispatchToProps(dispatch){
-    return { boundFetchLocations: () => dispatch(fetchLocations()) }
+    return { boundFetchEvents: () => dispatch(fetchEvents()),
+        boundFetchLocations: () => dispatch(fetchLocations()) }
 }
 
 export default connect (mapStateToProps, mapDispatchToProps) (LocationList)

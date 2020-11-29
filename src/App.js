@@ -12,7 +12,7 @@ function App() {
       <br/>
       <Router>
         <NavBar />
-        <Route path="/" component={Locations} />
+        <Route path="/locations" component={Locations} />
         <Route path="/events" component={Events} />
       </Router>
     </div>
