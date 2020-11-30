@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 import NavBar from './Components/Navbar/Navbar';
 import Locations from './Components/Locations';
 import Events from './Components/Events';
+import ToDo from './Components/ToDo';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <NavBar />
         <Route path="/locations" component={Locations} />
         <Route path="/events" component={Events} />
+        <Route path="/about" component={ToDo} />
       </Router>
     </div>
   );

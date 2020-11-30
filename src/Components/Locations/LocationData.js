@@ -13,6 +13,9 @@ const LocationData = (props) => {
     return(
         <div>
             {props.locationName} | <button className="btn btn-outline-danger" onClick={() => removeLocation(props.locationId)}>Delete</button>
+            <br/>
+            Events:
+            <br/>
             <ul>
                 {props.locationEvents.filter(event => event.location_id === props.locationId).map((event, index) => (
                     <li key={index}>{event.event_name}</li>

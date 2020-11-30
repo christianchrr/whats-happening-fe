@@ -12,7 +12,14 @@ const EventData = (props) => {
 
     return(
         <div>
-            {props.eventName} | <button className="btn btn-outline-danger" onClick={() => removeEvent(props.eventId)}>Delete</button>
+            {props.eventName}
+            {/* | <button className="btn btn-outline-danger" onClick={() => removeEvent(props.eventId)}>Delete</button> */}
+            <br/>
+            {props.eventDescription}
+            <br/>
+            {props.eventMonth}/{props.eventDay}/{props.eventYear}
+            <br/>
+            <button className="btn btn-outline-danger" onClick={() => removeEvent(props.eventId)}>Delete</button>
         </div>
     )
 
