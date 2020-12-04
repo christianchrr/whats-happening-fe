@@ -6,6 +6,20 @@ import LocationData from './LocationData'
 
 class LocationList extends React.Component {
 
+    initialState = {
+        locationSearchField: ""
+    }
+
+    state = this.initialState
+
+    handleChange = (e) => {
+        const key = e.target.name
+        const value = e.target.value
+        this.setState({
+            [key]: value
+        })
+    }
+
     componentDidMount = () => {
         this.props.boundFetchLocations()
         this.props.boundFetchEvents()
@@ -14,11 +28,25 @@ class LocationList extends React.Component {
     render() {
         return (
             <div className="location-list-container">
+                <form>
+                    <label onChange={this.handleChange} htmlFor="locationSearchBar">
+                        <input type="text" name="locationSearchField" placeholder="Search" />
+                    </label>
+                </form>
                 <ul id="LocationList" className="list-group">
-                    {this.props.locations.map((location, index) => {
+                    {this.props.locations.filter(location => location.location_city.toUpperCase().includes(this.state.locationSearchField.toUpperCase())).map((location, index) => {
                         return (
                             <li key={index} className="list-group-item">
-                                <LocationData locationName={location.location_name} locationAddressLineOne={location.location_address_line_one} locationAddressLineTwo={location.location_address_line_two} locationCity={location.location_city} locationState={location.location_state} locationZip={location.location_zip} locationId={location.id} locationEvents={this.props.events}/>
+                                <LocationData 
+                                  locationName={location.location_name} 
+                                  locationAddressLineOne={location.location_address_line_one} 
+                                  locationAddressLineTwo={location.location_address_line_two} 
+                                  locationCity={location.location_city} 
+                                  locationState={location.location_state} 
+                                  locationZip={location.location_zip} 
+                                  locationId={location.id} 
+                                  locationEvents={this.props.events}
+                                />
                             </li>
                         )
                     })}

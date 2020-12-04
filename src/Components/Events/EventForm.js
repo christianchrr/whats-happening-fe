@@ -4,7 +4,7 @@ import { addEvent } from '../../Actions/eventActions'
 
 class EventForm extends React.Component {
 
-    state = {
+    initialState = {
         eventName: "",
         eventMonth: "",
         eventDay: "",
@@ -12,6 +12,8 @@ class EventForm extends React.Component {
         eventDescription: "",
         locationId: ""
     }
+
+    state = this.initialState
 
     handleChange = (e) => {
         const key = e.target.name
@@ -21,16 +23,31 @@ class EventForm extends React.Component {
         })
     }
 
+    buildRequest = () => {
+        const request = {
+            event_name: this.state.eventName,
+            event_month: this.state.eventMonth,
+            event_day: this.state.eventDay,
+            event_year: this.state.eventYear,
+            event_description: this.state.eventDescription,
+            location_id: this.state.locationId
+        }
+
+        return request
+    }
+
     handleSubmit = (e) => {
         e.preventDefault()
-        this.props.addEvent(this.state)
+        const event = this.buildRequest()
+        this.props.addEvent(event)
+        this.setState(this.initialState)
     }
 
     render() {
         return (
             <div className="event-form-container">
                 <h4>New Event Form</h4>
-                <form onSubmit={(e) => this.handleSubmit(e)}>
+                <form onSubmit={this.handleSubmit}>
                     <div>
                         <label htmlFor="eventName"> 
                             Event Name{" "}

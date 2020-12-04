@@ -11,6 +11,7 @@ const ToDo = () => {
                 <li>Add Login</li>
                 <li>Add more CSS</li>
                 <li>Add Home Page</li>
+                <li>Add limitations to forms</li>
             </ul>
         </div>
     )

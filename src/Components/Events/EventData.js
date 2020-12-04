@@ -10,11 +10,9 @@ const EventData = (props) => {
         )
     }
 
-    return(
+    return (
         <div>
-            {props.eventName}
-            {/* | <button className="btn btn-outline-danger" onClick={() => removeEvent(props.eventId)}>Delete</button> */}
-            <br/>
+            <h4>{props.eventName}</h4>
             {props.eventDescription}
             <br/>
             {props.eventMonth}/{props.eventDay}/{props.eventYear}

@@ -17,13 +17,15 @@ function locationReducer(state = { locations: [] }, action) {
             }
 
         case 'ADD_LOCATION':
+
             return {
                 ...state,
                 locations: [...state.locations, action.payload]
             }
 
         case 'REMOVE_LOCATION':
-            let locationidx = state.locations.findIndex(location => location.id === location.id);
+            let locationidx = state.locations.findIndex(location => location.id === action.payload);
+            
             return {
                 ...state,
                 locations: [...state.locations.slice(0, locationidx), ...state.locations.slice(locationidx + 1)]
@@ -50,7 +52,7 @@ function locationReducer(state = { locations: [] }, action) {
             }
 
         case 'REMOVE_EVENT':
-            let eventidx = state.events.findIndex(event => event.id === event.id);
+            let eventidx = state.events.findIndex(event => event.id === action.payload);
             return {
                 ...state,
                 events: [...state.events.slice(0, eventidx), ...state.events.slice(eventidx + 1)]

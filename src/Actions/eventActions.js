@@ -14,7 +14,9 @@ export const addEvent = (event) => {
           body: JSON.stringify({event: event})
       })
       .then((obj) => obj.json())
-      .then((obj) => dispatch({ type: 'ADD_EVENT', payload: obj }))
+      .then((obj) => {
+        return dispatch({ type: 'ADD_EVENT', payload: obj })
+      })
   }
 }
 
@@ -22,6 +24,6 @@ export const deleteEvent = (eventId) => {
   return (dispatch) => {
       fetch(`http://localhost:3000/events/${eventId}`, {
           method: 'DELETE'})
-      .then(event => dispatch({ type: 'REMOVE_EVENT', id: eventId}))
+      .then((obj) => dispatch({ type: 'REMOVE_EVENT', payload: eventId}))
   }
 }

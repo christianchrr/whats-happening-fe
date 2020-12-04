@@ -4,18 +4,14 @@ import { deleteLocation } from '../../Actions/locationActions'
 
 const LocationData = (props) => {
 
-    const removeLocation = (locationId) => {
-        return(
-            props.deleteLocation(locationId)
-        )
-    }
-
     return(
         <div>
-            {props.locationName} | <button className="btn btn-outline-danger" onClick={() => removeLocation(props.locationId)}>Delete</button>
+            <h4>{props.locationName}</h4>
+            {props.locationCity}, {props.locationState}
             <br/>
-            Events:
+            <button className="btn btn-outline-danger" onClick={() => props.deleteLocation(props.locationId)}>Delete</button>
             <br/>
+            <u>Events:</u>
             <ul>
                 {props.locationEvents.filter(event => event.location_id === props.locationId).map((event, index) => (
                     <li key={index}>{event.event_name}</li>
