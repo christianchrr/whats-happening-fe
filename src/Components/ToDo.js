@@ -12,6 +12,8 @@ const ToDo = () => {
                 <li>Add more CSS</li>
                 <li>Add Home Page</li>
                 <li>Add limitations to forms</li>
+                <li>Get date form field working</li>
+                <li>fix dropdown reset on form submit</li>
             </ul>
         </div>
     )

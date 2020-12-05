@@ -30,7 +30,7 @@ class EventList extends React.Component {
             <div className="event-list-container">
                 <form>
                     <label onChange={this.handleChange} htmlFor="eventSearchBar">
-                        <input type="text" name="eventSearchField" placeholder="Search" />
+                        <input type="search" name="eventSearchField" placeholder="Search" />
                     </label>
                 </form>
                 <ul id="EventList" className="list-group">

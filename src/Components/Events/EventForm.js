@@ -23,7 +23,7 @@ class EventForm extends React.Component {
         })
     }
 
-    buildRequest = () => {
+    translateToSnake = () => {
         const request = {
             event_name: this.state.eventName,
             event_month: this.state.eventMonth,
@@ -38,7 +38,7 @@ class EventForm extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        const event = this.buildRequest()
+        const event = this.translateToSnake()
         this.props.addEvent(event)
         this.setState(this.initialState)
     }
@@ -49,34 +49,29 @@ class EventForm extends React.Component {
                 <h4>New Event Form</h4>
                 <form onSubmit={this.handleSubmit}>
                     <div>
-                        <label htmlFor="eventName"> 
-                            Event Name{" "}
-                            <input onChange={this.handleChange} type="text" name="eventName" placeholder="" />
+                        <label htmlFor="eventName">
+                            <input onChange={this.handleChange} value={this.state.eventName} type="text" name="eventName" placeholder="Name" />
                         </label>
                         <br/>
                         <label htmlFor="eventMonth">
-                            Month{" "}
-                            <input onChange={this.handleChange} type="number" name="eventMonth" placeholder="" />
+                            <input onChange={this.handleChange} value={this.state.eventMonth} type="number" name="eventMonth" placeholder="Month" />
                         </label>
                         <br/>
                         <label htmlFor="eventDay">
-                            Day{" "}
-                            <input onChange={this.handleChange} type="number" name="eventDay" placeholder="" />
+                            <input onChange={this.handleChange} value={this.state.eventDay} type="number" name="eventDay" placeholder="Day" />
                         </label>
                         <br/>
                         <label htmlFor="eventYear">
-                            Year{" "}
-                            <input onChange={this.handleChange} type="number" name="eventYear" placeholder="" />
+                            <input onChange={this.handleChange} value={this.state.eventYear} type="number" name="eventYear" placeholder="Year" />
                         </label>
                         <br/>
                         <label htmlFor="eventDescription">
-                            Description{" "}
-                            <input onChange={this.handleChange} type="description" name="eventDescription" placeholder="" />
+                            <input onChange={this.handleChange} value={this.state.eventDescription} type="description" name="eventDescription" placeholder="Description" />
                         </label>
                         <br/>
                         <label htmlFor="eventLocation">
-                            <select onChange={this.handleChange} name="locationId">
-                                <option selected disabled>-select-</option>
+                            <select onChange={this.handleChange} value={this.state.LocationId} name="locationId">
+                                <option selected disabled>Location</option>
                                 {this.props.locations.map((location, index) => {
                                     return <option key={index} value={location.id}>{location.location_name}</option>
                                 })}

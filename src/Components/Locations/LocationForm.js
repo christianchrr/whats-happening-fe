@@ -23,7 +23,7 @@ class LocationForm extends React.Component {
         })
     }
 
-    buildRequest = () => {
+    translateToSnake = () => {
         const request = {
             location_name: this.state.locationName,
             location_address_line_one: this.state.locationAddressLineOne,
@@ -38,7 +38,7 @@ class LocationForm extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        const location = this.buildRequest()
+        const location = this.translateToSnake()
         this.props.addLocation(location)
         this.setState(this.initialState)
     }
@@ -56,42 +56,36 @@ class LocationForm extends React.Component {
                 <h4>New Location Form</h4>
                 <form onSubmit={this.handleSubmit} >
                     <div>
-                        <label htmlFor="locationName"> 
-                            Location Name{" "}
-                            <input onChange={this.handleChange} value={this.state.locationName} type="text" name="locationName" placeholder="" />
+                        <label htmlFor="locationName">
+                            <input onChange={this.handleChange} value={this.state.locationName} type="text" name="locationName" placeholder="Name" />
                         </label>
                         <br/>
                         <label htmlFor="locationAddressLineOne">
-                            Address Line 1{" "}
-                            <input onChange={this.handleChange} value={this.state.locationAddressLineOne} type="text" name="locationAddressLineOne" placeholder="" />
+                            <input onChange={this.handleChange} value={this.state.locationAddressLineOne} type="text" name="locationAddressLineOne" placeholder="Address Line One" />
                         </label>
                         <br/>
                         <label htmlFor="locationAddressLineTwo">
-                            Address Line 2{" "}
-                            <input onChange={this.handleChange} value={this.state.locationAddressLineTwo} type="text" name="locationAddressLineTwo" placeholder="" />
+                            <input onChange={this.handleChange} value={this.state.locationAddressLineTwo} type="text" name="locationAddressLineTwo" placeholder="Address Line Two" />
                         </label>
                         <br/>
                         <label htmlFor="locationCity">
-                            City{" "}
-                            <input onChange={this.handleChange} value={this.state.locationCity} type="text" name="locationCity" placeholder="" />
+                            <input onChange={this.handleChange} value={this.state.locationCity} type="text" name="locationCity" placeholder="City" />
                         </label>
                         <br/>
                         <label htmlFor="locationState">
-                            State{" "}
-                            <select onChange={this.handleChange} value={this.state.locationState} name="locationState">
-                                <option selected disabled>-select-</option>
-                                <option value="{option}"></option>
+                            <select onChange={this.handleChange} name="locationState">
+                                <option selected disabled>State</option>
                                 {this.stateOptions.map((option, index) => {
                                     return (
-                                    <option value={option}>{option}</option>
+                                        
+                                        <option value={option}>{option}</option>
                                     )
                                 })}
                             </select>
                         </label>
                         <br/>
                         <label htmlFor="locationZipCode">
-                            Zip{" "}
-                            <input onChange={this.handleChange} value={this.state.locationZipCode} type="text" name="locationZipCode" placeholder="" />
+                            <input onChange={this.handleChange} value={this.state.locationZipCode} type="text" name="locationZipCode" placeholder="Zip" />
                         </label>
                     </div>
                     <div>

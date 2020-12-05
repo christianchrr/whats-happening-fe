@@ -19,12 +19,9 @@ export const addLocation = (location) => {
 }
 
 export const deleteLocation = (locationId) => {
-    const data =  {id: locationId}
-    
     return (dispatch) => {
         fetch(`http://localhost:3000/locations/${locationId}`, {
             method: 'DELETE',
-            // body: JSON.stringify(data)
         })
         .then((obj) => dispatch({ type: 'REMOVE_LOCATION', payload: locationId}))
     }

@@ -30,11 +30,15 @@ class LocationList extends React.Component {
             <div className="location-list-container">
                 <form>
                     <label onChange={this.handleChange} htmlFor="locationSearchBar">
-                        <input type="text" name="locationSearchField" placeholder="Search" />
+                        <input type="search" name="locationSearchField" placeholder="Search" />
                     </label>
                 </form>
                 <ul id="LocationList" className="list-group">
-                    {this.props.locations.filter(location => location.location_city.toUpperCase().includes(this.state.locationSearchField.toUpperCase())).map((location, index) => {
+                    {this.props.locations.filter(location => location.location_name.toUpperCase()
+                    .includes(this.state.locationSearchField.toUpperCase()) ||  location.location_city.toUpperCase()
+                    .includes(this.state.locationSearchField.toUpperCase()) || location.location_state.toUpperCase()
+                    .includes(this.state.locationSearchField.toUpperCase()))
+                    .map((location, index) => {
                         return (
                             <li key={index} className="list-group-item">
                                 <LocationData 
