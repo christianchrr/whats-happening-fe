@@ -6,6 +6,7 @@ import Locations from './Components/Locations';
 import Events from './Components/Events';
 import ToDo from './Components/ToDo';
 import HomePage from './Components/HomePage';
+import LocationShow from './Components/Locations/LocationShow';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <br/>
       <Router>
         <NavBar />
+        <Route exact path="/locations/:id" component={LocationShow} />
         <Route exact path="/" component={HomePage} />
         <Route exact path="/locations" component={Locations} />
         <Route exact path="/events" component={Events} />
