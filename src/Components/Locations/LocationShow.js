@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { fetchLocations } from '../../Actions/locationActions'
 import { fetchEvents } from '../../Actions/eventActions'
 import LocationShowData from './LocationShowData'
+import { withRouter } from 'react-router'
+import { compose } from "redux"
 
 class LocationShow extends React.Component {
 
@@ -11,18 +13,32 @@ class LocationShow extends React.Component {
         this.props.boundFetchEvents()
     }
 
+    getLocation = () => {
+        let id = parseInt(this.props.match.params.id)
+        return this.props.locations.filter(location => location.id === id)
+    }
+
+    getEvents = (id) => {
+        return this.props.events.filter(event => event.location_id === id)
+    }
+
     render() {
         return (
-            <LocationShowData
-                locationName={location.location_name} 
-                locationAddressLineOne={location.location_address_line_one} 
-                locationAddressLineTwo={location.location_address_line_two} 
-                locationCity={location.location_city} 
-                locationState={location.location_state} 
-                locationZip={location.location_zip} 
-                locationId={location.id} 
-                locationEvents={this.props.events}
-            />
+            <div className="location-show-container">
+                {this.getLocation().map((location, index) => {
+                    return (  
+                        <LocationShowData key={index}
+                            locationName={location.location_name}
+                            locationAddressLineOne={location.location_address_line_one} 
+                            locationAddressLineTwo={location.location_address_line_two} 
+                            locationCity={location.location_city} 
+                            locationState={location.location_state} 
+                            locationZip={location.location_zip_code} 
+                            locationEvents={this.getEvents(location.id)}
+                        />
+                    )
+                })}
+            </div>
         )
     }
 
@@ -37,4 +53,4 @@ function mapDispatchToProps(dispatch){
         boundFetchLocations: () => dispatch(fetchLocations()) }
 }
 
-export default connect (mapStateToProps, mapDispatchToProps) (LocationShow)
+export default compose (withRouter, connect(mapStateToProps, mapDispatchToProps)) (LocationShow)

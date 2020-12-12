@@ -47,7 +47,7 @@ class LocationList extends React.Component {
                                   locationAddressLineTwo={location.location_address_line_two}
                                   locationCity={location.location_city}
                                   locationState={location.location_state}
-                                  locationZip={location.location_zip}
+                                  locationZip={location.location_zip_code}
                                   locationId={location.id}
                                   locationEvents={this.props.events}
                                 />
