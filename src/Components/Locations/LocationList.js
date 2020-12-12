@@ -40,15 +40,15 @@ class LocationList extends React.Component {
                     .includes(this.state.locationSearchField.toUpperCase()))
                     .map((location, index) => {
                         return (
-                            <li key={index} className="list-group-item">
-                                <LocationData 
-                                  locationName={location.location_name} 
-                                  locationAddressLineOne={location.location_address_line_one} 
-                                  locationAddressLineTwo={location.location_address_line_two} 
-                                  locationCity={location.location_city} 
-                                  locationState={location.location_state} 
-                                  locationZip={location.location_zip} 
-                                  locationId={location.id} 
+                            <li key={index} className="ll-list-group-item">
+                                <LocationData
+                                  locationName={location.location_name}
+                                  locationAddressLineOne={location.location_address_line_one}
+                                  locationAddressLineTwo={location.location_address_line_two}
+                                  locationCity={location.location_city}
+                                  locationState={location.location_state}
+                                  locationZip={location.location_zip}
+                                  locationId={location.id}
                                   locationEvents={this.props.events}
                                 />
                             </li>
