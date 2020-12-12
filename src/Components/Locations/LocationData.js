@@ -1,12 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import { deleteLocation } from '../../Actions/locationActions'
+import { Link } from 'react-router-dom';
 
 const LocationData = (props) => {
 
-    return(
+    return (
         <div>
-            <h4>{props.locationName}</h4>
+            <Link to={`/locations/${props.locationId}`}><h4>{props.locationName}</h4></Link>
             {props.locationCity}, {props.locationState}
             <br/>
             <button className="btn btn-outline-danger" onClick={() => props.deleteLocation(props.locationId)}>Delete</button>
