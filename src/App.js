@@ -5,6 +5,7 @@ import NavBar from './Components/Navbar/Navbar';
 import Locations from './Components/Locations';
 import Events from './Components/Events';
 import ToDo from './Components/ToDo';
+import HomePage from './Components/HomePage';
 
 function App() {
   return (
@@ -13,9 +14,10 @@ function App() {
       <br/>
       <Router>
         <NavBar />
-        <Route path="/locations" component={Locations} />
-        <Route path="/events" component={Events} />
-        <Route path="/about" component={ToDo} />
+        <Route exact path="/" component={HomePage} />
+        <Route exact path="/locations" component={Locations} />
+        <Route exact path="/events" component={Events} />
+        <Route exact path="/about" component={ToDo} />
       </Router>
     </div>
   );
