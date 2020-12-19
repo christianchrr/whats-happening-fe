@@ -12,9 +12,9 @@ const LocationData = (props) => {
             <br/>
             <button className="btn btn-outline-danger" onClick={() => props.deleteLocation(props.locationId)}>Delete</button>
             <br/>
-            <u>Events:</u>
+            { props.locationEvents.length > 0 ? <p>Events</p> : "" }
             <ul>
-                {props.locationEvents.filter(event => event.location_id === props.locationId).map((event, index) => (
+                {props.locationEvents.map((event, index) => (
                     <li key={index}>{event.event_name}</li>
                 ))}
             </ul>

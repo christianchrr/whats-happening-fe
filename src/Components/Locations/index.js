@@ -7,15 +7,18 @@ const Locations = () => {
 
     return (
         <div className="location-container container">
-            <h3>Locations</h3>
+            <h2>Locations</h2>
             <br/>
             <div className="row">
                 <div className="col-sm">
-                    <LocationForm />
+                    <div className="l-con">
+                        <LocationList />
+                    </div>
                 </div>
                 <div className="col-sm">
-                    <h4>Existing Locations</h4>
-                    <LocationList />
+                    <div className="r-con">
+                        <LocationForm />
+                    </div>
                 </div>
             </div>
         </div>

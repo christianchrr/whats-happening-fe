@@ -2,7 +2,7 @@ import React from 'react'
 import './Navbar.css';
 import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 
-const NavBar = () => {
+const Navbar = () => {
 
     return (
         <div className="navbar">
@@ -17,4 +17,4 @@ const NavBar = () => {
 
 }
 
-export default NavBar
+export default Navbar

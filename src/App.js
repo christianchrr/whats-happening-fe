@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
-import NavBar from './Components/Navbar/Navbar';
+import Navbar from './Components/Navbar/Navbar';
 import Footer from './Components/Footer/Footer';
 import Locations from './Components/Locations';
 import Events from './Components/Events';
@@ -13,7 +13,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <NavBar />
+        <Navbar />
         <div className="main-content">
             <Route exact path="/locations/:id" component={LocationShow} />
             <Route exact path="/" component={HomePage} />

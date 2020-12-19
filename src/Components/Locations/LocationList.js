@@ -25,9 +25,14 @@ class LocationList extends React.Component {
         this.props.boundFetchEvents()
     }
 
+    getEvents = (id) => {
+        return this.props.events.filter(event => event.location_id === id)
+    }
+
     render() {
         return (
             <div className="location-list-container">
+                <h4>Existing Locations</h4>
                 <form>
                     <label onChange={this.handleChange} htmlFor="locationSearchBar">
                         <input type="search" name="locationSearchField" placeholder="Search" />
@@ -49,7 +54,7 @@ class LocationList extends React.Component {
                                   locationState={location.location_state}
                                   locationZip={location.location_zip_code}
                                   locationId={location.id}
-                                  locationEvents={this.props.events}
+                                  locationEvents={this.getEvents(location.id)}
                                 />
                             </li>
                         )
