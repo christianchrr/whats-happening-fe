@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
+// import { Context } from '../../Store/index'
 import LocationList from './LocationList'
 import LocationForm from './LocationForm'
 import './Locations.css'
 
 const Locations = () => {
+
+    // const [state, dispatch] = useContext(Context)
 
     return (
         <div className="location-container container">
@@ -18,6 +21,7 @@ const Locations = () => {
                 <div className="col-sm">
                     <div className="r-con">
                         <LocationForm />
+                        {/* dispatch={dispatch} state={state} */}
                     </div>
                 </div>
             </div>

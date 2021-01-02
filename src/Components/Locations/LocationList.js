@@ -1,10 +1,19 @@
-import React from 'react'
+import React, { useEffect, useContext } from 'react'
+// import { Context } from '../../Store/index'
 import { connect } from 'react-redux'
 import { fetchLocations } from '../../Actions/locationActions'
 import { fetchEvents } from '../../Actions/eventActions'
 import LocationData from './LocationData'
 
 class LocationList extends React.Component {
+
+    // const [state, dispatch] = useContext(Context)
+
+    // useEffect( () => {
+    //     fetchLocations()
+    // }, [])
+
+    // const [searchField, setSearchField] = useState("");
 
     initialState = {
         locationSearchField: ""

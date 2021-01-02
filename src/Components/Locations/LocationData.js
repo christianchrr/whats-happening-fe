@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 
 const LocationData = (props) => {
 
+    // const [state, dispatch] = useContext(Context)
+
     return (
         <div>
             <Link to={`/locations/${props.locationId}`}><h4>{props.locationName}</h4></Link>

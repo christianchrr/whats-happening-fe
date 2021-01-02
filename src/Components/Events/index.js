@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
+// import { Context } from '../../Store/index'
 import EventList from './EventList'
 import EventForm from './EventForm'
 
 const Events = () => {
+
+    // const [state, dispatch] = useContext(Context)
 
     return (
         <div className="event-container">
@@ -11,6 +14,7 @@ const Events = () => {
             <EventList />
             <br/>
             <EventForm />
+            {/* dispatch={dispatch} state={state} */}
         </div>
     )
 }

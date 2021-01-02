@@ -88,13 +88,6 @@ class LocationForm extends React.Component {
                         <label htmlFor="locationZipCode">
                             <input onChange={this.handleChange} value={this.state.locationZipCode} type="text" name="locationZipCode" placeholder="Zip" />
                         </label>
-                        {/* <label htmlFor="vegan"> */}
-                            {/* <select>
-                                <option selected disabled value={""}>""</option>
-                                <option>Vegan</option>
-                                <option>Not Vegan</option>
-                            </select>
-                        </label> */}
                     </div>
                     <div>
                         <button type="submit" className="btn btn-outline-primary">Create Location</button>

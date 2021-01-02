@@ -6,6 +6,14 @@ import EventData from './EventData'
 
 class EventList extends React.Component {
 
+    // const [state, dispatch] = useContext(Context)
+
+    // useEffect( () => {
+    //     fetchEvents()
+    // }, [])
+
+    // const [searchField, setSearchField] = useState("");
+
     initialState = {
         eventSearchField: ""
     }

@@ -53,6 +53,10 @@ class EventForm extends React.Component {
                             <input onChange={this.handleChange} value={this.state.eventName} type="text" name="eventName" placeholder="Name" />
                         </label>
                         <br/>
+                        {/* <label htmlFor="eventDate">
+                            <input onChange={this.handleChange} type="date" name="eventDate" placeholder="Date" />
+                        </label>
+                        <br/> */}
                         <label htmlFor="eventMonth">
                             <input onChange={this.handleChange} value={this.state.eventMonth} type="number" name="eventMonth" placeholder="Month" />
                         </label>
