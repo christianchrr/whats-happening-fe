@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const UserLogin = () => {
 
     // const [state, dispatch] = useContext(Context)
-    // const [user, setUser] = useState("");
+    const [user, setUser] = useState("");
 
     // const translateToSnake = () => {
     //     const request = {
@@ -15,7 +15,6 @@ const UserLogin = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         const user = this.translateToSnake()
-        this.props.addUser(user)
     }
     
     return (

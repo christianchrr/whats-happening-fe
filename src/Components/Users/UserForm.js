@@ -38,6 +38,10 @@ const UserForm = () => {
                 <label htmlFor="userEmail">
                     <input type="text" name="userEmail" placeholder="Email" />
                 </label>
+                <br/>
+                <label htmlFor="userPassword">
+                    <input type="text" name="userPassword" placeholder="Password" />
+                </label>
                 <div>
                     <button type="submit" className="btn btn-outline-primary">Create Account</button>
                 </div>
