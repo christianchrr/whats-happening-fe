@@ -15,19 +15,7 @@ class LocationList extends React.Component {
 
     // const [searchField, setSearchField] = useState("");
 
-    initialState = {
-        locationSearchField: ""
-    }
-
-    state = this.initialState
-
-    handleChange = (e) => {
-        const key = e.target.name
-        const value = e.target.value
-        this.setState({
-            [key]: value
-        })
-    }
+    const { value:LocationSearchField, bind:bindLocationSearchField, reset:resetLocationSearchField } = useInput('');
 
     componentDidMount = () => {
         this.props.boundFetchLocations()
@@ -43,8 +31,8 @@ class LocationList extends React.Component {
             <div className="location-list-container">
                 <h4>Existing Locations</h4>
                 <form>
-                    <label onChange={this.handleChange} htmlFor="locationSearchBar">
-                        <input type="search" name="locationSearchField" placeholder="Search" />
+                    <label htmlFor="locationSearchBar">
+                        <input type="search" name="locationSearchField" placeholder="Search" {...bindLocationSearchField} />
                     </label>
                 </form>
                 <ul id="LocationList" className="list-group">
