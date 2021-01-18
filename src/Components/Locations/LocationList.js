@@ -51,7 +51,7 @@ import LocationData from './LocationData'
                     </label>
                 </form>
                 <ul id="LocationList" className="list-group">
-                    {state.locations.filter(location => location.location_name.toUpperCase()
+                    {state.locations && state.locations.filter(location => location.location_name.toUpperCase()
                     .includes(searchField.toUpperCase()) ||  location.location_city.toUpperCase()
                     .includes(searchField.toUpperCase()) || location.location_state.toUpperCase()
                     .includes(searchField.toUpperCase()))
