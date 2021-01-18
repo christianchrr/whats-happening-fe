@@ -17,11 +17,12 @@ import LocationData from './LocationData'
 
     // const [searchField, setSearchField] = useState("");
 
-    initialState = {
-        locationSearchField: ""
-    }
 
-    state = this.initialState
+    // initialState = {
+    //     locationSearchField: ""
+    // }
+
+    // state = this.initialState
 
     // handleChange = (e) => {
     //     const key = e.target.name
@@ -30,6 +31,9 @@ import LocationData from './LocationData'
     //         [key]: value
     //     })
     // }
+
+    const { value:LocationSearchField, bind:bindLocationSearchField, reset:resetLocationSearchField } = useInput('');
+
 
     // componentDidMount = () => {
     //     this.props.boundFetchLocations()
@@ -45,8 +49,8 @@ import LocationData from './LocationData'
             <div className="location-list-container">
                 <h4>Existing Locations</h4>
                 <form>
-                    <label onChange={this.handleChange} htmlFor="locationSearchBar">
-                        <input type="search" name="locationSearchField" placeholder="Search" />
+                    <label htmlFor="locationSearchBar">
+                        <input type="search" name="locationSearchField" placeholder="Search" {...bindLocationSearchField} />
                     </label>
                 </form>
                 <ul id="LocationList" className="list-group">
