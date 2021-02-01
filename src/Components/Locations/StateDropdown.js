@@ -1,6 +1,6 @@
 import React from "react"
 
-const StateDropdown = ({ setLocationState }) => {
+const StateDropdown = ({ handleChange, value }) => {
 
   const stateArray = [
     "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL",
@@ -8,11 +8,11 @@ const StateDropdown = ({ setLocationState }) => {
     "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA",
     "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"
   ]
-  
+
   return (
     <div>
       <label htmlFor="locationState">
-        <select name="locationState" onChange={e => setLocationState(e.target.value)}>
+        <select name="locationState" handleChange={handleChange} value={value}>
           <option selected disabled value={""}>State</option>
           {stateArray.map((option, index) => {
             return (

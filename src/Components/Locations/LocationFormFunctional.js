@@ -7,13 +7,24 @@ const LocationFormFunctional = () => {
   /** Store **/
   const [state, dispatch] = useContext(Context)
 
+  const initialState - {
+    locationName: '',
+    locationAddressLineOne: '',
+    locationAddressLineTwo: '',
+    locationCity: '',
+    locationState: '',
+    locationZipCode: ''
+  }
+
   /** Form fields **/
-  const [locationName, setLocationName] = useState('')
-  const [locationAddressLineOne, setLocationAddressLineOne] = useState('')
-  const [locationAddressLineTwo, setLocationAddressLineTwo] = useState('')
-  const [locationCity, setLocationCity] = useState('')
-  const [locationState, setLocationState] = useState('')
-  const [locationZipCode, setLocationZipCode] = useState('')
+  const [{
+    locationName,
+    locationAddressLineOne,
+    locationAddressLineTwo,
+    locationCity,
+    locationState,
+    locationZipCode
+  }, setState] = useState(initialState)
 
   const buildRequest = () => {
     return {
@@ -26,11 +37,15 @@ const LocationFormFunctional = () => {
     }
   }
 
+  const handleChange = (e) => {
+    setState(previousState => {...previousState, [e.target.name]: e.target.value})
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
     const location = buildRequest()
     addLocation(location)
-    alert("Location Added")
+    setState(initialState)
   }
 
   return (
@@ -42,7 +57,7 @@ const LocationFormFunctional = () => {
             <input
               name="locationName"
               type="text"
-              onChange={e => setLocationName(e.target.value)}
+              onChange={handleChange}
               placeholder="Name"
               value={locationName}
             />
@@ -52,7 +67,7 @@ const LocationFormFunctional = () => {
             <input
               name="locationAddressLineOne"
               type="text"
-              onChange={e => setLocationAddressLineOne(e.target.value)}
+              onChange={handleChange}
               placeholder="Address Line One"
               value={locationAddressLineOne}
             />
@@ -62,7 +77,7 @@ const LocationFormFunctional = () => {
             <input
               name="locationAddressLineTwo"
               type="text"
-              onChange={e => setLocationAddressLineTwo(e.target.value)}
+              onChange={handleChange}
               placeholder="Address Line Two"
               value={locationAddressLineTwo}
             />
@@ -72,19 +87,19 @@ const LocationFormFunctional = () => {
             <input
               name="locationCity"
               type="text"
-              onChange={e => setLocationCity(e.target.value)}
+              onChange={handleChange}
               placeholder="City"
               value={locationCity}
             />
           </label>
           <br/>
-          <StateDropdown setLocationState={setLocationState} />
+          <StateDropdown onChange={handleChange} value={locationState} />
           <br/>
           <label htmlFor="locationZipCode">
             <input
               name="locationZipCode"
               type="text"
-              onChange={e => setLocationZipCode(e.target.value)}
+              onChange={handleChange}
               placeholder="Zip"
               value={locationZipCode} />
           </label>
