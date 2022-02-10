@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { Context } from '../../Store/index'
 // import { connect } from 'react-redux'
 import { fetchLocations } from '../../Actions/locationActions'
@@ -15,7 +15,7 @@ import LocationData from './LocationData'
         fetchEvents()
     }, [])
 
-    const [searchField, setSearchField] = useState("");
+    // const [searchField, setSearchField] = useState("");
 
 
     // initialState = {
@@ -32,13 +32,16 @@ import LocationData from './LocationData'
     //     })
     // }
 
+    const { value:LocationSearchField, bind:bindLocationSearchField, reset:resetLocationSearchField } = useInput('');
+
+
     // componentDidMount = () => {
     //     this.props.boundFetchLocations()
     //     this.props.boundFetchEvents()
     // }
 
-    const getEventsByLocationId = (id) => {
-        return state.events.filter(event => event.location_id === id)
+    getEvents = (id) => {
+        return this.props.events.filter(event => event.location_id === id)
     }
 
     // render() {
@@ -47,14 +50,14 @@ import LocationData from './LocationData'
                 <h4>Existing Locations</h4>
                 <form>
                     <label htmlFor="locationSearchBar">
-                        <input type="search" name="locationSearchField" placeholder="Search" onChange={(e) => {setSearchField(e.target.value)}} />
+                        <input type="search" name="locationSearchField" placeholder="Search" {...bindLocationSearchField} />
                     </label>
                 </form>
                 <ul id="LocationList" className="list-group">
-                    {state.locations.filter(location => location.location_name.toUpperCase()
-                    .includes(searchField.toUpperCase()) ||  location.location_city.toUpperCase()
-                    .includes(searchField.toUpperCase()) || location.location_state.toUpperCase()
-                    .includes(searchField.toUpperCase()))
+                    {this.props.locations.filter(location => location.location_name.toUpperCase()
+                    .includes(this.state.locationSearchField.toUpperCase()) ||  location.location_city.toUpperCase()
+                    .includes(this.state.locationSearchField.toUpperCase()) || location.location_state.toUpperCase()
+                    .includes(this.state.locationSearchField.toUpperCase()))
                     .map((location, index) => {
                         return (
                             <li key={index} className="ll-list-group-item">
@@ -66,7 +69,7 @@ import LocationData from './LocationData'
                                   locationState={location.location_state}
                                   locationZip={location.location_zip_code}
                                   locationId={location.id}
-                                  locationEvents={getEventsByLocationId(location.id)}
+                                  locationEvents={this.getEvents(location.id)}
                                 />
                             </li>
                         )

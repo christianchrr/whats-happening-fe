@@ -1,9 +1,7 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { connect } from 'react-redux';
 import { deleteLocation } from '../../Actions/locationActions'
 import { Link } from 'react-router-dom';
-import { Context } from '../../Store/index'
-
 
 const LocationData = (props) => {
 
@@ -27,5 +25,4 @@ const LocationData = (props) => {
 
 }
 
-// export default connect (null, { deleteLocation }) (LocationData)
-export default LocationData
+export default connect (null, { deleteLocation }) (LocationData)
