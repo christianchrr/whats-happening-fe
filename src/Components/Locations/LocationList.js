@@ -1,19 +1,17 @@
 import React, { useEffect, useContext } from 'react'
-import { Context } from '../../Store/index'
-// import { connect } from 'react-redux'
+// import { Context } from '../../Store/index'
+import { connect } from 'react-redux'
 import { fetchLocations } from '../../Actions/locationActions'
 import { fetchEvents } from '../../Actions/eventActions'
 import LocationData from './LocationData'
 
-// class LocationList extends React.Component {
-    const LocationList = () => {
+class LocationList extends React.Component {
 
-    const [state, dispatch] = useContext(Context)
+    // const [state, dispatch] = useContext(Context)
 
-    useEffect( () => {
-        fetchLocations();
-        fetchEvents()
-    }, [])
+    // useEffect( () => {
+    //     fetchLocations()
+    // }, [])
 
     // const [searchField, setSearchField] = useState("");
 
@@ -23,24 +21,24 @@ import LocationData from './LocationData'
 
     state = this.initialState
 
-    // handleChange = (e) => {
-    //     const key = e.target.name
-    //     const value = e.target.value
-    //     this.setState({
-    //         [key]: value
-    //     })
-    // }
+    handleChange = (e) => {
+        const key = e.target.name
+        const value = e.target.value
+        this.setState({
+            [key]: value
+        })
+    }
 
-    // componentDidMount = () => {
-    //     this.props.boundFetchLocations()
-    //     this.props.boundFetchEvents()
-    // }
+    componentDidMount = () => {
+        this.props.boundFetchLocations()
+        this.props.boundFetchEvents()
+    }
 
     getEvents = (id) => {
         return this.props.events.filter(event => event.location_id === id)
     }
 
-    // render() {
+    render() {
         return (
             <div className="location-list-container">
                 <h4>Existing Locations</h4>
@@ -73,18 +71,17 @@ import LocationData from './LocationData'
                 </ul>
             </div>
         )
-    // }
+    }
 
 }
 
-// function mapStateToProps(state){
-//     return {locations: state.location.locations, events: state.event.events}
-// }
+function mapStateToProps(state){
+    return {locations: state.location.locations, events: state.event.events}
+}
 
-// function mapDispatchToProps(dispatch){
-//     return { boundFetchEvents: () => dispatch(fetchEvents()),
-//         boundFetchLocations: () => dispatch(fetchLocations()) }
-// }
+function mapDispatchToProps(dispatch){
+    return { boundFetchEvents: () => dispatch(fetchEvents()),
+        boundFetchLocations: () => dispatch(fetchLocations()) }
+}
 
-// export default connect (mapStateToProps, mapDispatchToProps) (LocationList)
-export default LocationList
+export default connect (mapStateToProps, mapDispatchToProps) (LocationList)

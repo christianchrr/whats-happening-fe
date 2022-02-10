@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const LocationData = (props) => {
 
-    const [state, dispatch] = useContext(Context)
+    // const [state, dispatch] = useContext(Context)
 
     return (
         <div>
