@@ -1,19 +1,10 @@
-import React, { useEffect, useContext } from 'react'
-// import { Context } from '../../Store/index'
+import React from 'react'
 import { connect } from 'react-redux'
 import { fetchLocations } from '../../Actions/locationActions'
 import { fetchEvents } from '../../Actions/eventActions'
 import LocationData from './LocationData'
 
 class LocationList extends React.Component {
-
-    // const [state, dispatch] = useContext(Context)
-
-    // useEffect( () => {
-    //     fetchLocations()
-    // }, [])
-
-    // const [searchField, setSearchField] = useState("");
 
     initialState = {
         locationSearchField: ""
@@ -34,14 +25,9 @@ class LocationList extends React.Component {
         this.props.boundFetchEvents()
     }
 
-    getEvents = (id) => {
-        return this.props.events.filter(event => event.location_id === id)
-    }
-
     render() {
         return (
             <div className="location-list-container">
-                <h4>Existing Locations</h4>
                 <form>
                     <label onChange={this.handleChange} htmlFor="locationSearchBar">
                         <input type="search" name="locationSearchField" placeholder="Search" />
@@ -54,16 +40,16 @@ class LocationList extends React.Component {
                     .includes(this.state.locationSearchField.toUpperCase()))
                     .map((location, index) => {
                         return (
-                            <li key={index} className="ll-list-group-item">
-                                <LocationData
-                                  locationName={location.location_name}
-                                  locationAddressLineOne={location.location_address_line_one}
-                                  locationAddressLineTwo={location.location_address_line_two}
-                                  locationCity={location.location_city}
-                                  locationState={location.location_state}
-                                  locationZip={location.location_zip_code}
-                                  locationId={location.id}
-                                  locationEvents={this.getEvents(location.id)}
+                            <li key={index} className="list-group-item">
+                                <LocationData 
+                                  locationName={location.location_name} 
+                                  locationAddressLineOne={location.location_address_line_one} 
+                                  locationAddressLineTwo={location.location_address_line_two} 
+                                  locationCity={location.location_city} 
+                                  locationState={location.location_state} 
+                                  locationZip={location.location_zip} 
+                                  locationId={location.id} 
+                                  locationEvents={this.props.events}
                                 />
                             </li>
                         )

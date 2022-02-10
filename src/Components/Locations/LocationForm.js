@@ -41,7 +41,6 @@ class LocationForm extends React.Component {
         const location = this.translateToSnake()
         this.props.addLocation(location)
         this.setState(this.initialState)
-        alert("Location Added")
     }
 
     stateOptions = [ 
@@ -74,8 +73,8 @@ class LocationForm extends React.Component {
                         </label>
                         <br/>
                         <label htmlFor="locationState">
-                            <select onChange={this.handleChange} value={this.state.locationState} name="locationState">
-                                <option selected disabled value={""}>State</option>
+                            <select onChange={this.handleChange} name="locationState">
+                                <option selected disabled>State</option>
                                 {this.stateOptions.map((option, index) => {
                                     return (
                                         

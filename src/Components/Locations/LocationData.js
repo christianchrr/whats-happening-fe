@@ -1,22 +1,19 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import { deleteLocation } from '../../Actions/locationActions'
-import { Link } from 'react-router-dom';
 
 const LocationData = (props) => {
 
-    // const [state, dispatch] = useContext(Context)
-
-    return (
+    return(
         <div>
-            <Link to={`/locations/${props.locationId}`}><h4>{props.locationName}</h4></Link>
+            <h4>{props.locationName}</h4>
             {props.locationCity}, {props.locationState}
             <br/>
             <button className="btn btn-outline-danger" onClick={() => props.deleteLocation(props.locationId)}>Delete</button>
             <br/>
-            { props.locationEvents.length > 0 ? <p>Events</p> : "" }
+            <u>Events:</u>
             <ul>
-                {props.locationEvents.map((event, index) => (
+                {props.locationEvents.filter(event => event.location_id === props.locationId).map((event, index) => (
                     <li key={index}>{event.event_name}</li>
                 ))}
             </ul>
