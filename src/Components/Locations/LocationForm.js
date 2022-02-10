@@ -103,5 +103,4 @@ function mapStateToProps(state){
     return {locations: state.location.locations}
 }
 
-// export default connect (mapStateToProps, { addLocation }) (LocationForm)
-export default LocationForm
+export default connect (mapStateToProps, { addLocation }) (LocationForm)
