@@ -10,8 +10,6 @@ import HomePage from './Components/HomePage';
 function App() {
   return (
     <div className="App">
-      <h1>Whats Happening</h1>
-      <br/>
       <Router>
         <NavBar />
         <Route exact path="/" component={HomePage} />
