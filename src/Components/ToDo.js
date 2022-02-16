@@ -4,7 +4,13 @@ const ToDo = () => {
 
     return (
         <div className="to-do-list">
-            <h3>CRUSH IT EVERY DAY</h3>
+            <h3>To Do</h3>
+            <br/>
+            <ul>
+                <li>Add Login</li>
+                <li>Add more CSS</li>
+                <li>Add Home Page</li>
+            </ul>
         </div>
     )
 

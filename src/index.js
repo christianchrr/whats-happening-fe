@@ -7,16 +7,13 @@ import rootReducer from './Store/rootReducer';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import StoreAction from './Store'
 
-// const store = createStore(rootReducer, applyMiddleware(thunk));
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 ReactDOM.render(
-  // <Provider store={store}>
-    <StoreAction>
-      <App />
-    </StoreAction>,
-  // </Provider>
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById('root')
 );
 
