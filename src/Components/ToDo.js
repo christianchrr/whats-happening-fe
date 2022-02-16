@@ -10,6 +10,7 @@ const ToDo = () => {
                 <li>Add Login</li>
                 <li>Add more CSS</li>
                 <li>Add Home Page</li>
+                <li>Test</li>
             </ul>
         </div>
     )
