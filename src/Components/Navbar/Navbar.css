@@ -1,11 +1,11 @@
 .navbar {
     width: 100%;
     background: hsl(0, 0%, 15%);
-    height: 55px;
-    /* position: fixed;z-index: 1; */
+    height: 58px;
+    position: sticky;
     box-shadow: 0 1px 5px rgba(0, 0, 0, .8), 0 5px 5px rgba(0, 0, 0, 0.25);
     margin: 0px;
-    padding: 0;
+    padding-right: 100%;
 }
 
 .navbar a {
@@ -13,7 +13,7 @@
     color: rgb(255, 255, 255);
     text-decoration: none;
     font-family: Arial, Helvetica, sans-serif;
-    padding-top: 32px;
+    padding-top: 37px;
     padding-bottom: 2px;
     padding-left: 25px;
     padding-right: 25px;
@@ -23,9 +23,9 @@
 .navbar .main {
     font-size: 24px;
     font-weight: 800;
-    padding-top: 24px;
+    padding-top: 29px;
     padding-left: 5px;
-    padding-bottom: 0;
+    padding-bottom: 0px;
 }
 
 .navbar .links {

@@ -39,8 +39,11 @@ class LocationForm extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault()
         const location = this.translateToSnake()
-        this.props.addLocation(location)
-        this.setState(this.initialState)
+        if (this.state.locationState != null) {
+            this.props.addLocation(location)
+            this.setState(this.initialState)
+        }
+        
     }
 
     stateOptions = [ 
@@ -57,11 +60,11 @@ class LocationForm extends React.Component {
                 <form onSubmit={this.handleSubmit} >
                     <div>
                         <label htmlFor="locationName">
-                            <input onChange={this.handleChange} value={this.state.locationName} type="text" name="locationName" placeholder="Name" />
+                            <input onChange={this.handleChange} value={this.state.locationName} type="text" name="locationName" placeholder="Name" required />
                         </label>
                         <br/>
                         <label htmlFor="locationAddressLineOne">
-                            <input onChange={this.handleChange} value={this.state.locationAddressLineOne} type="text" name="locationAddressLineOne" placeholder="Address Line One" />
+                            <input onChange={this.handleChange} value={this.state.locationAddressLineOne} type="text" name="locationAddressLineOne" placeholder="Address Line One" required />
                         </label>
                         <br/>
                         <label htmlFor="locationAddressLineTwo">
@@ -69,7 +72,7 @@ class LocationForm extends React.Component {
                         </label>
                         <br/>
                         <label htmlFor="locationCity">
-                            <input onChange={this.handleChange} value={this.state.locationCity} type="text" name="locationCity" placeholder="City" />
+                            <input onChange={this.handleChange} value={this.state.locationCity} type="text" name="locationCity" placeholder="City" required />
                         </label>
                         <br/>
                         <label htmlFor="locationState">
